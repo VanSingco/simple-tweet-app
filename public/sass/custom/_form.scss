@@ -1,0 +1,8 @@
+textarea.form-control{
+    background-color: #f6f9fc;
+    border-bottom: 1px solid transparent;
+    &:focus{
+        border-bottom: 1px solid transparent;
+        background-color: #f6f9fc;
+    }
+}

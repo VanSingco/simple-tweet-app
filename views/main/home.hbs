@@ -1,0 +1,79 @@
+<section class="home">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center card-profile">
+                            <figure>
+                                <img src="{{ user.photo }}" class="card-profile__img" alt="">
+                            </figure>
+                            <h4 class="m-0 card-profile__name">{{user.name}}</h4>
+                            <h5 class="m-0 card-profile__username">
+                                <a href="/user/{{user._id}}">@{{user.username}}</a>
+                            </h5>               
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <form id="sendTweet">
+                            <div class="form-group">
+                                <textarea name="tweet" id="tweet"  rows="3" class="form-control" placeholder="Say Something"></textarea>
+                            </div>
+                            <button class="btn btn-primary" type="submit">Tweet</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="" id="tweets">
+                    {{#each tweets}}
+                    <div class="card tweet-card">
+                        <div class="card-body">
+                            <div class="user-info d-flex align-items-center">
+                                <div class="d-flex mr-auto">
+                                    <figure class="m-0">
+                                        <img src="{{owner.photo}}" class="user-info__img" alt="">
+                                    </figure>
+                                    <div class="user-info__text ml-3">
+                                        <h5 class="user-info__text--name ">
+                                            <a href="/user/{{owner._id}}">{{owner.name}}</a>
+                                        </h5>
+                                        <span class="user-info__text--username">@{{owner.username}}</span>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <span class="time-date mr-3">Just now</span>
+                                </div>
+                            </div>
+                            <div class="tweet mt-3 mb-3">
+                                <p>{{content}}</p>
+                            </div>
+                            <div class="like-comment-share d-flex">
+                                <div class="like mr-5">
+                                    <i class="far fa-heart"></i>
+                                </div>
+                                <div class="comment mr-5">
+                                    <i class="far fa-comment-alt"></i>
+                                </div>
+                                <div class="share mr-5">
+                                    <i class="fas fa-share-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

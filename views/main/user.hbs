@@ -1,0 +1,163 @@
+<section class="profile">
+    <header id="header">
+        <div class="profile-cover">
+            <img src="https://travel.jumia.com/blog/pk/wp-content/uploads/2016/09/featured-image-5.jpg">
+        </div>
+
+        <div class="profile-nav d-flex align-items-center">
+            <div class="profile-nav__info d-flex ">
+                <div class="profile-nav__info--picture">
+                    <img src="{{foundUser.photo}}" alt="">
+                </div>
+                <div class="profile-nav__info--sidename">
+                  <div class="profile-nav__info--sidename__name-username">
+                        <h4 class="m-0">{{ foundUser.name }}</h4>
+                        <h5 class="m-0">@{{ foundUser.username }}</h5>
+                  </div>
+                </div>
+            </div>
+            <div class="profile-description ml-md-auto d-flex">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="tweet-tab" data-toggle="tab" href="#tweet" role="tab" aria-controls="tweet" aria-selected="true"> 1 Tweets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="followers-tab" data-toggle="tab" href="#followers" role="tab" aria-controls="followers" aria-selected="false">2 Followers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="following-tab" data-toggle="tab" href="#following" role="tab" aria-controls="following" aria-selected="false">0 Following</a>
+                    </li>
+                </ul>
+                <div class="follow-btn">
+                     {{#if currentUser}} 
+                         <button type="button" class="btn btn-neutral btn-round">Edit Profile</button>
+                        {{else}}
+                        <input type="hidden" id="user_id" value="{{foundUser._id}}">
+                        {{#if follower}}
+                            <button type="button" class="btn btn-success btn-lg btn-round" id="unfollow">Following</button>
+                        {{else}}
+                            <button type="button" class="btn btn-primary btn-lg btn-round" id="follow">Follow</button>
+                        {{/if}}
+                     {{/if}}
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
+    <div class="profile-body">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="tweet" role="tabpanel" aria-labelledby="tweet-tab">
+                                    {{!-- <div class="card">
+                                        <div class="card-body">
+                                            <form id="sendTweet">
+                                                <div class="form-group">
+                                                    <textarea name="tweet" id="tweet" rows="3" class="form-control" placeholder="Say Something"></textarea>
+                                                </div>
+                                                <button class="btn btn-primary" type="submit">Tweet</button>
+                                            </form>
+                                        </div>
+                                    </div> --}}
+                                    
+                                    <div class="" id="tweets">
+                                        {{#each tweets}}
+                                        <div class="card tweet-card">
+                                            <div class="card-body">
+                                                <div class="user-info d-flex align-items-center">
+                                                    <div class="d-flex mr-auto">
+                                                        <figure class="m-0">
+                                                            <img src="{{owner.photo}}" class="user-info__img" alt="">
+                                                        </figure>
+                                                        <div class="user-info__text ml-3">
+                                                            <h5 class="user-info__text--name ">{{owner.name}}</h5>
+                                                            <span class="user-info__text--username">@{{owner.username}}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="">
+                                                        <span class="time-date mr-3">Just now</span>
+                                                    </div>
+                                                </div>
+                                                <div class="tweet mt-3 mb-3">
+                                                    <p>{{content}}</p>
+                                                </div>
+                                                <div class="like-comment-share d-flex">
+                                                    <div class="like mr-5">
+                                                        <i class="far fa-heart"></i>
+                                                    </div>
+                                                    <div class="comment mr-5">
+                                                        <i class="far fa-comment-alt"></i>
+                                                    </div>
+                                                    <div class="share mr-5">
+                                                        <i class="fas fa-share-alt"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{/each}}
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="followers" role="tabpanel" aria-labelledby="followers-tab">
+                                    <div class="row">
+                                         {{#each foundUser.followers}}
+                                            <div class="col-md-6">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <div class="text-center card-profile">
+                                                            <figure>
+                                                                <img src="{{ photo }}" class="card-profile__img" alt="">
+                                                            </figure>
+                                                            <h4 class="m-0 card-profile__name">{{name}}</h4>
+                                                            <h5 class="m-0 card-profile__username">
+                                                                <a href="/user/{{_id}}">@{{username}}</a>
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                          {{/each}}
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="following" role="tabpanel" aria-labelledby="following-tab">
+                                    {{#each foundUser.following}}
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="text-center card-profile">
+                                                    <figure>
+                                                        <img src="{{ photo }}" class="card-profile__img" alt="">
+                                                    </figure>
+                                                    <h4 class="m-0 card-profile__name">{{name}}</h4>
+                                                    <h5 class="m-0 card-profile__username">
+                                                        <a href="/user/{{ _id }}">@{{username}}</a>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>

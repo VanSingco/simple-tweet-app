@@ -1,0 +1,18 @@
+.home{
+    margin-top: 5rem;
+}
+
+.card-profile{
+    &__img{
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+    }
+    &__name{
+        font-size: 18px;
+        font-weight: 500;
+    }
+    &__username{
+        font-size: 15px;
+    }
+}

@@ -1,0 +1,17 @@
+@import "now-ui-kit";
+@import "custom/form";
+@import "custom/card";
+@import "custom/button";
+@import "layouts/nav";
+@import "layouts/header";
+@import "layouts/footer";
+@import "page/landing";
+@import "page/signup";
+@import "page/login";
+@import "page/home";
+@import "page/profile";
+
+body{
+    background-color: #f6f9fc;
+    font-family: 'Roboto',sans-serif;
+}
